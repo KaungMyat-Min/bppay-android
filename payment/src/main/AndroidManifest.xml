@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.blueplanet.payment">
+
+    <application android:usesCleartextTraffic="true">
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:theme="@style/bpPayAppTheme">
+
+        </activity>
+    </application>
+</manifest>
