@@ -1,4 +1,5 @@
 <resources>
-    <string name="bp_pay_app_name">bppay</string>
+
     <string name="bp_pay_connection_error">Can\'t load data. Check your network connection.</string>
+    <string name="bp_pay_title">Payment</string>
 </resources>

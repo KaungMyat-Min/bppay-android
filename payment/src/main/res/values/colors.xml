@@ -3,4 +3,10 @@
     <color name="colorPrimary"></color>
     <color name="colorPrimaryDark"></color>
     <color name="colorAccent"></color>
+
+    <color name="bp_pay_action_bar_color">@color/colorPrimary</color>
+    <color name="bp_pay_title_color">@android:color/white</color>
+    <color name="bp_pay_error_text_color"></color>
+    <color name="bp_pay_error_background_color">@color/colorAccent</color>
+    <drawable name="bp_pay_navigation_icon"></drawable>
 </resources>

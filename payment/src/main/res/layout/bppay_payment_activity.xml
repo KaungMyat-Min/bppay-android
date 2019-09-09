@@ -13,8 +13,12 @@
         android:layout_height="?attr/actionBarSize"
         android:windowActionBarOverlay="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/bp_pay_title"
+        android:background="@color/bp_pay_action_bar_color"
+        app:titleTextColor="@color/bp_pay_title_color"
+        app:navigationIcon="@drawable/bp_pay_navigation_icon"
+        />
 
 
 
@@ -36,6 +40,7 @@
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/bp_pay_error_background_color"
         >
 
         <TextView
@@ -43,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textColor="@color/bp_pay_error_text_color"
             />
 
     </LinearLayout>

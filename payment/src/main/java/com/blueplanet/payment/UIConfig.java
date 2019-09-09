@@ -10,8 +10,8 @@ public class UIConfig implements Serializable {
 
     public static class Builder {
         private Context mContext;
-        private String title = "Payment";
-        private int titleColor = Color.WHITE;
+        private String title;
+        private int titleColor;
         private int errorTextColor;
         private int errorBackgroundColor;
         private Drawable navigationIconDrawable;
@@ -75,9 +75,6 @@ public class UIConfig implements Serializable {
 
 
         public UIConfig build() {
-            if (actionBarColor == 0) {
-                actionBarColor = getColor(R.color.colorPrimary);
-            }
 
             UIConfig uiConfig = new UIConfig();
 
@@ -151,11 +148,11 @@ public class UIConfig implements Serializable {
         return this;
     }
 
-    public Drawable getNavigationIconDrawable() {
+    public Drawable getNavigationIcon() {
         return navigationIconDrawable;
     }
 
-    public UIConfig setNavigationIconDrawable(Drawable navigationIconDrawable) {
+    public UIConfig setNavigationIcon(Drawable navigationIconDrawable) {
         this.navigationIconDrawable = navigationIconDrawable;
         return this;
     }

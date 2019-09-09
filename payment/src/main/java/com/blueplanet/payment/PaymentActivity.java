@@ -62,7 +62,9 @@ public final class PaymentActivity extends AppCompatActivity {
         updateTheme();
 
         if (mUIConfig.isActionBarShown()) {
-            mToolbar.setTitle(mUIConfig.getTitle());
+            if (mUIConfig.getTitle() != null && !mUIConfig.getTitle().equals("")) {
+                mToolbar.setTitle(mUIConfig.getTitle());
+            }
 
             setSupportActionBar(mToolbar);
 
@@ -82,6 +84,7 @@ public final class PaymentActivity extends AppCompatActivity {
                 setSupportActionBar(mToolbar);
             }
         }
+
         customizeWebViewSetting(webView);
 
         WebViewClient webViewClient = getWebViewClient();
@@ -239,8 +242,13 @@ public final class PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTheme() {
-        mToolbar.setBackgroundColor(mUIConfig.getActionBarColor());
-        mToolbar.setTitleTextColor(mUIConfig.getTitleColor());
+        if (mUIConfig.getActionBarColor() != 0) {
+            mToolbar.setBackgroundColor(mUIConfig.getActionBarColor());
+        }
+
+        if (mUIConfig.getTitleColor() != 0) {
+            mToolbar.setTitleTextColor(mUIConfig.getTitleColor());
+        }
 
         if (mUIConfig.getErrorBackgroundColor() != 0) {
             mContainerView.setBackgroundColor(mUIConfig.getErrorBackgroundColor());
@@ -255,8 +263,8 @@ public final class PaymentActivity extends AppCompatActivity {
             mToolbar.setBackground(mUIConfig.getActionBarBackgroundDrawable());
         }
 
-        if (mUIConfig.getActionBarBackgroundDrawable() != null) {
-            mToolbar.setNavigationIcon(mUIConfig.getNavigationIconDrawable());
+        if (mUIConfig.getNavigationIcon() != null) {
+            mToolbar.setNavigationIcon(mUIConfig.getNavigationIcon());
         }
     }
 
