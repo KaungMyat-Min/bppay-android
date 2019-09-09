@@ -43,6 +43,7 @@ public final class PaymentActivity extends AppCompatActivity {
 
     //============= variable start ==============
     private Config mConfig;
+    private UIConfig mUIConfig;
     private int price;
     private String orderId;
 
@@ -55,12 +56,13 @@ public final class PaymentActivity extends AppCompatActivity {
         price = getIntent().getIntExtra(BPpay.KEY_PRICE, 500);
         orderId = getIntent().getStringExtra(BPpay.KEY_ORDER_ID);
         mConfig = (Config) getIntent().getSerializableExtra("config");
+        mUIConfig = (UIConfig) getIntent().getSerializableExtra("ui_config");
 
         bindViews();
         updateTheme();
 
-        if (mConfig.isActionBarShown()) {
-            mToolbar.setTitle(mConfig.getTitle());
+        if (mUIConfig.isActionBarShown()) {
+            mToolbar.setTitle(mUIConfig.getTitle());
 
             setSupportActionBar(mToolbar);
 
@@ -237,24 +239,24 @@ public final class PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTheme() {
-        mToolbar.setBackgroundColor(mConfig.getActionBarColor());
-        mToolbar.setTitleTextColor(mConfig.getTitleColor());
+        mToolbar.setBackgroundColor(mUIConfig.getActionBarColor());
+        mToolbar.setTitleTextColor(mUIConfig.getTitleColor());
 
-        if (mConfig.getErrorBackgroundColor() != 0) {
-            mContainerView.setBackgroundColor(mConfig.getErrorBackgroundColor());
+        if (mUIConfig.getErrorBackgroundColor() != 0) {
+            mContainerView.setBackgroundColor(mUIConfig.getErrorBackgroundColor());
         }
 
-        if (mConfig.getErrorTextColor() != 0) {
-            mErrorText.setTextColor(mConfig.getErrorTextColor());
+        if (mUIConfig.getErrorTextColor() != 0) {
+            mErrorText.setTextColor(mUIConfig.getErrorTextColor());
         }
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && mConfig.getActionBarBackgroundDrawable() != null) {
-            mToolbar.setBackground(mConfig.getActionBarBackgroundDrawable());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && mUIConfig.getActionBarBackgroundDrawable() != null) {
+            mToolbar.setBackground(mUIConfig.getActionBarBackgroundDrawable());
         }
 
-        if (mConfig.getActionBarBackgroundDrawable() != null) {
-            mToolbar.setNavigationIcon(mConfig.getNavigationIconDrawable());
+        if (mUIConfig.getActionBarBackgroundDrawable() != null) {
+            mToolbar.setNavigationIcon(mUIConfig.getNavigationIconDrawable());
         }
     }
 

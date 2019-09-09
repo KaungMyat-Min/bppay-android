@@ -9,14 +9,7 @@ class Config implements Serializable {
     private String serviceName;
     private String password;
     private String email;
-    private String title;
-    private int titleColor;
-    private int errorTextColor;
-    private int errorBackgroundColor;
-    private Drawable navigationIconDrawable;
-    private int actionBarColor;
-    private Drawable actionBarBackgroundDrawable;
-    private boolean isActionBarShown;
+
 
     public String getMerchantId() {
         return merchantId;
@@ -54,75 +47,5 @@ class Config implements Serializable {
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public Config setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public int getTitleColor() {
-        return titleColor;
-    }
-
-    public Config setTitleColor(int titleColor) {
-        this.titleColor = titleColor;
-        return this;
-    }
-
-    public int getActionBarColor() {
-        return actionBarColor;
-    }
-
-    public Config setActionBarColor(int actionBarColor) {
-        this.actionBarColor = actionBarColor;
-        return this;
-    }
-
-    public boolean isActionBarShown() {
-        return isActionBarShown;
-    }
-
-    public Config setActionBarShown(boolean actionBarShown) {
-        isActionBarShown = actionBarShown;
-        return this;
-    }
-
-    public int getErrorTextColor() {
-        return errorTextColor;
-    }
-
-    public Config setErrorTextColor(int errorTextColor) {
-        this.errorTextColor = errorTextColor;
-        return this;
-    }
-
-    public int getErrorBackgroundColor() {
-        return errorBackgroundColor;
-    }
-
-    public Config setErrorBackgroundColor(int errorBackgroundColor) {
-        this.errorBackgroundColor = errorBackgroundColor;
-        return this;
-    }
-
-    public Drawable getNavigationIconDrawable() {
-        return navigationIconDrawable;
-    }
-
-    public Config setNavigationIconDrawable(Drawable navigationIconDrawable) {
-        this.navigationIconDrawable = navigationIconDrawable;
-        return this;
-    }
-
-    public Drawable getActionBarBackgroundDrawable() {
-        return actionBarBackgroundDrawable;
-    }
-
-    public Config setActionBarBackgroundDrawable(Drawable actionBarBackgroundDrawable) {
-        this.actionBarBackgroundDrawable = actionBarBackgroundDrawable;
-        return this;
-    }
 }

@@ -14,14 +14,8 @@ public class BPpay {
         private String serviceName;
         private String password;
         private String email;
-        private String title = "Payment";
-        private int titleColor = Color.WHITE;
-        private int actionBarColor;
-        private boolean isActionBarShown = true;
-        private int errorTextColor;
-        private int errorBackgroundColor;
-        private Drawable navigationIconDrawable;
-        private Drawable actionBarBackgroundDrawable;
+        private UIConfig mUIConfig;
+
 
         public Builder(Activity context) {
             mContext = context;
@@ -47,89 +41,31 @@ public class BPpay {
             return this;
         }
 
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder setTitleColor(int resId) {
-            this.titleColor = getColor(resId);
-            return this;
-        }
-
-        public Builder setActionBarColor(int resId) {
-            this.actionBarColor = getColor(resId);
-            return this;
-        }
-
-        public Builder setActionBarShown(boolean actionBarShown) {
-            isActionBarShown = actionBarShown;
-            return this;
-        }
-
-        public Builder setErrorTextColor(int resId) {
-            this.errorTextColor = getColor(resId);
-            return this;
-        }
-
-        public Builder setErrorBackgroundColor(int resId) {
-            this.errorBackgroundColor = getColor(resId);
-            return this;
-        }
-
-        public Builder setNavigationIconDrawable(int resId) {
-            this.navigationIconDrawable = getDrawable(resId);
-            return this;
-        }
-
-        public Builder setActionBarBackgroundDrawable(int resId) {
-            this.actionBarBackgroundDrawable = getDrawable(resId);
-            return this;
-        }
-
-        public Builder setNavigationIconDrawable(Drawable drawable) {
-            this.navigationIconDrawable = drawable;
-            return this;
-        }
-
-        public Builder setActionBarBackgroundDrawable(Drawable drawable) {
-            this.actionBarBackgroundDrawable = drawable;
+        public Builder setUIConfig(UIConfig UIConfig) {
+            mUIConfig = UIConfig;
             return this;
         }
 
         public BPpay build() {
             BPpay bPpay = new BPpay(this.mContext);
-            if (actionBarColor == 0) {
-                actionBarColor = getColor(R.color.colorPrimary);
-            }
+
             Config config = new Config()
                     .setEmail(this.email)
                     .setMerchantId(this.merchantId)
                     .setServiceName(this.serviceName)
                     .setPassword(this.password)
-                    .setEmail(this.email)
-                    .setTitle(this.title)
-                    .setTitleColor(this.titleColor)
-                    .setActionBarColor(this.actionBarColor)
-                    .setActionBarShown(this.isActionBarShown)
-                    .setErrorTextColor(this.errorTextColor)
-                    .setErrorBackgroundColor(this.errorBackgroundColor)
-                    .setNavigationIconDrawable(this.navigationIconDrawable)
-                    .setActionBarBackgroundDrawable(this.actionBarBackgroundDrawable);
-
+                    .setEmail(this.email);
             bPpay.setConfig(config);
+
+            if (mUIConfig == null) {
+                mUIConfig = new UIConfig.Builder(mContext).build();
+            }
+
+            bPpay.setUIConfig(mUIConfig);
 
             return bPpay;
         }
 
-
-        private int getColor(int resId) {
-            return mContext.getResources().getColor(resId);
-        }
-
-        private Drawable getDrawable(int resId) {
-            return mContext.getResources().getDrawable(resId);
-        }
 
     }
 
@@ -139,6 +75,7 @@ public class BPpay {
     public static final String KEY_ORDER_ID = "order_id";
 
     private Config mConfig;
+    private UIConfig mUIConfig;
 
     private final Activity mContext;
 
@@ -153,6 +90,7 @@ public class BPpay {
     private void startActivityForResult(String orderId, int price) {
         Intent intent = new Intent(mContext, PaymentActivity.class);
         intent.putExtra("config", mConfig);
+        intent.putExtra("ui_config", mUIConfig);
         intent.putExtra(KEY_ORDER_ID, orderId);
         intent.putExtra(KEY_PRICE, price);
         mContext.startActivityForResult(intent, BPPAY_REQUEST_CODE);
@@ -160,5 +98,13 @@ public class BPpay {
 
     private void setConfig(Config config) {
         mConfig = config;
+    }
+
+    public UIConfig getUIConfig() {
+        return mUIConfig;
+    }
+
+    public void setUIConfig(UIConfig UIConfig) {
+        mUIConfig = UIConfig;
     }
 }

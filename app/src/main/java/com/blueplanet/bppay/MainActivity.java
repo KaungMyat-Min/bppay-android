@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPassword("your_password")
                 .build();
 
+
         mButton = findViewById(R.id.btn_payment);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
